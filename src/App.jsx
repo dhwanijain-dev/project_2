@@ -15,6 +15,9 @@ const App = () => {
       
     <div className='flex flex-col items-center gap-20 h-screen'>
         <Navbar/>
+        <div className='background absolute top-0 left-0 w-full h-screen -z-10'>
+
+        </div>
       {/* <LoginContainer/> */}
         <Routes>
             <Route exact path='/' Component={LoginContainer}/>

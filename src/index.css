@@ -4,16 +4,25 @@
 @tailwind utilities;
 
 :root{
-  color-scheme: dark;
+  color-scheme: light;
 }
 
+body{
+background: #4CA1AF;
+  background: -webkit-linear-gradient(to bottom, #C4E0E5, #4CA1AF);
+  background: linear-gradient(to bottom, #C4E0E5, #4CA1AF); 
+}
 *{
   font-family: "Work Sans", sans-serif;
+  cursor: default;
   
 }
 
-
-
+.background{
+background: url(./assets/background.jpg) no-repeat;
+  background-size: cover;
+  filter: grayscale(40%);
+}
 input{
   outline:none
 }

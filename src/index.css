@@ -190,3 +190,8 @@ input[type="checkbox"]:checked{
   background-color: #4CAF50;
   
 }
+
+.chatbox{
+  background: rgb(255, 224, 178);
+    background: linear-gradient(0deg, rgba(255, 224, 178, 1) 56%, rgba(255, 253, 231, 1) 100%);
+}

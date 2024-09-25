@@ -1,7 +1,6 @@
 import { CheckCircle2, Eye, EyeOff, User } from 'lucide-react'
-import React, { useRef, useState } from 'react'
-import { FaDribbble, FaFacebook, FaGoogle, FaSkype, FaTwitter } from 'react-icons/fa'
-import { BrowserRouter, Link } from 'react-router-dom'
+import { useState } from 'react'
+import { Link } from 'react-router-dom'
 
 const Stage1 = () => {
   const [passwordType, setPasswordType] = useState('password');

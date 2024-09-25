@@ -1,5 +1,5 @@
-import { Check, CheckCircle2, Square, SquareArrowDown } from 'lucide-react'
-import React, { useState } from 'react'
+import { CheckCircle2 } from 'lucide-react'
+import  { useState } from 'react'
 import { Link } from 'react-router-dom';
 
 const Stage2 = () => {

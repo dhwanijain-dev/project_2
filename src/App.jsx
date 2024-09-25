@@ -1,12 +1,12 @@
-import React from 'react'
+
 import Navbar from './components/Navbar'
 import LoginContainer from './components/LoginContainer'
-import {Route, BrowserRouter, Routes } from 'react-router-dom'
-import { Router } from 'lucide-react'
+import {Route, Routes } from 'react-router-dom'
+
 import Stage2 from './components/Stage2'
 import Stage1 from './components/Stage1'
 import Stage3 from './components/Stage3'
-import Chatbot from './components/Chatbot'
+import Chatbot from './components/Chatbot.jsx'
 
 
 
@@ -15,7 +15,9 @@ const App = () => {
     
       
     <div className='flex flex-col items-center gap-20 h-screen'>
+      {location.pathname !== '/chatbot' && (
         <Navbar/>
+      )}
         <div className='background absolute top-0 left-0 w-full h-screen -z-10'>
 
         </div>

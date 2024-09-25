@@ -1,10 +1,9 @@
 import { useGSAP } from '@gsap/react'
 import gsap from 'gsap'
-import { Timeline } from 'gsap/gsap-core'
-import { Database, Download, PrinterIcon, Share2Icon, ShareIcon, ViewIcon } from 'lucide-react'
-import React, { useEffect, useState } from 'react'
+import { Database, Download, PrinterIcon,ShareIcon, ViewIcon } from 'lucide-react'
+import  { useEffect, useState } from 'react'
 import { PiDetective } from 'react-icons/pi'
-import { ClipLoader, MoonLoader } from 'react-spinners'
+import { MoonLoader } from 'react-spinners'
 
 
 

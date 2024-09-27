@@ -7,6 +7,7 @@ import Stage2 from './components/Stage2'
 import Stage1 from './components/Stage1'
 import Stage3 from './components/Stage3'
 import Chatbot from './components/Chatbot.jsx'
+import Chatbutton from './components/Chatbutton.jsx'
 
 
 
@@ -16,7 +17,10 @@ const App = () => {
       
     <div className='flex flex-col items-center gap-20 h-screen'>
       {location.pathname !== '/chatbot' && (
-        <Navbar/>
+        <>
+          <Navbar />
+          <Chatbutton />
+        </>
       )}
         <div className='background absolute top-0 left-0 w-full h-screen -z-10'>
 

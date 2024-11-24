@@ -1,72 +1,59 @@
-import { useGSAP } from '@gsap/react'
-import gsap from 'gsap'
-import { Database, Download, PrinterIcon,ShareIcon, ViewIcon } from 'lucide-react'
-import  { useEffect, useState } from 'react'
-import { PiDetective } from 'react-icons/pi'
-import { MoonLoader } from 'react-spinners'
+import React, { useState } from 'react';
+import axios from 'axios';
+import { useNavigate, useLocation } from 'react-router-dom';
 
+function Stage3() {
+  const [data, setData] = useState(null);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  // Retrieve existing state
+  const { platform, username, password, selectedOptions } = location.state || {};
 
-const Stage3 = () => {
-const [loading, setloading] = useState(false)
+  const fetchData = async () => {
+    setLoading(true);
+    setError(null);
+    try {
+      console.log('Sending data to server:', {
+        platform,
+        username,
+        password,
+        options: selectedOptions
+      });
 
-useGSAP(()=>{
-  gsap.from(".dialog",{
-    scale:0,
-    y:-200,
-    duration:1,
-    delay:1,
-    ease: "elastic.out(1,0.2)",
-    
-  })
- 
-  
-})
+      const response = await axios.post('http://localhost:5000/run-script', {
+        platform,
+        username,
+        password,
+        options: selectedOptions
+      });
 
-useEffect(()=>{
-  setloading(true)
+      console.log('Response from server:', response.data);
+      setData(response.data);
+      setLoading(false);
+    } catch (error) {
+      console.error('Error details:', error);
+      setError('Error running scripts');
+      setLoading(false);
+    }
+  };
 
-  setTimeout(()=>{
-    setloading(false)
-  },1000)
-},[])
+  const handleNext = () => {
+    navigate('/stage4', { state: { platform, data } });
+  };
 
-  
   return (
-    <>
-    <div className='dialog absolute font-semibold text-xl   px-3 py-5 rounded-xl top-24 border-2 bg-white border-black'> 
-    Successfully Parsed ! 🎉🎊
+    <div className='loginContainer  h-[60vh] flex flex-col gap-10 rounded-md w-[25vw] border-2 border-black bg-white '>
+      <h2>Stage 3</h2>
+      <button onClick={fetchData} disabled={loading}>
+        {loading ? 'Running Scripts...' : 'Fetch Data'}
+      </button>
+      {error && <p>{error}</p>}
+      {data && <button onClick={handleNext}>Next</button>}
     </div>
-
-      <div className='loginContainer bg-white border-2 border-black relative h-[60vh] flex flex-col gap-3 rounded-md w-[25vw]  items-center'>
-   
-      {loading ? 
-
-        <MoonLoader
-          className='absolute top-10'
-          color={"#000000"}
-          loading={loading}
-          size={50}
-          aria-label="Loading Spinner"
-          data-testid="loader"
-        />
-        
-       :
-        <div className='flex flex-col gap-5 items-center  p-3'>
-        <h1 className='text-4xl font-medium  underline underline-offset-8 cursor-default'>Data Summary</h1>
-        <div className='px-3 py-2 rounded-lg  border border-neutral-600  flex justify-between w-32 cursor-pointer '><PrinterIcon/> Print</div>
-        <div className='px-3 py-2 rounded-lg  border border-neutral-600  flex justify-between w-32 cursor-pointer '><Download/> Save</div>
-        <div className='px-3 py-2 rounded-lg  border border-neutral-600  flex justify-between w-32 cursor-pointer '><ViewIcon/> View</div>
-        <div className='px-3 py-2 rounded-lg  border border-neutral-600  flex justify-between w-32 cursor-pointer '><ShareIcon/> Share</div>
-        <div className='px-3 py-2 rounded-lg  border border-neutral-600  flex justify-between w-32 cursor-pointer '><Database/> Store</div>
-        <div className='px-3 py-2 rounded-lg  border border-neutral-600  flex justify-between w-32 cursor-pointer '><PiDetective size={25}/> Analyse</div>
-        </div>
-        
-      } 
-
-    </div>
-    </>
-  )
+  );
 }
 
-export default Stage3
+export default Stage3;

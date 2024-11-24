@@ -6,6 +6,7 @@ import {Route, Routes } from 'react-router-dom'
 import Stage2 from './components/Stage2'
 import Stage1 from './components/Stage1'
 import Stage3 from './components/Stage3'
+import Stage4 from './components/Stage4'
 import Chatbot from './components/Chatbot.jsx'
 import Chatbutton from './components/Chatbutton.jsx'
 
@@ -31,6 +32,7 @@ const App = () => {
             <Route exact path='/Stage1' Component={Stage1}/>
             <Route exact path='/Stage2' Component={Stage2}/>
             <Route exact path='/Stage3' Component={Stage3}/>
+            <Route exact path='/Stage4' Component={Stage4}/>
             <Route exact path='/chatbot' Component={Chatbot}/>
         </Routes>
     
